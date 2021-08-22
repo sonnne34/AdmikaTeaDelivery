@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "847385123229",
+    "firebase_url": "https://kalibri-845e2.firebaseio.com",
+    "project_id": "kalibri-845e2",
+    "storage_bucket": "kalibri-845e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847385123229:android:209021ea4bc588b76db774",
+        "android_client_info": {
+          "package_name": "com.newAdmilaTea.newadmilatea"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847385123229-sha715c1fa7geiangdabhbj3p137bblp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4AgKB3k0o5dn5KQPS9YWgLLaQcYRlcV8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "847385123229-sha715c1fa7geiangdabhbj3p137bblp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "847385123229-9ts2p625uqimn7gq65vgac4nrpm5fopk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ShupeginSergey.Sushitta"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847385123229:android:02ee483e484f2d986db774",
+        "android_client_info": {
+          "package_name": "com.sushi.Sushi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847385123229-sha715c1fa7geiangdabhbj3p137bblp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4AgKB3k0o5dn5KQPS9YWgLLaQcYRlcV8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "847385123229-sha715c1fa7geiangdabhbj3p137bblp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "847385123229-9ts2p625uqimn7gq65vgac4nrpm5fopk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ShupeginSergey.Sushitta"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

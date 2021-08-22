@@ -1,4 +1,4 @@
-package com.example.adminkatea
+package com.newAdmilaTea.newadmilatea
 
 import org.junit.Test
 
