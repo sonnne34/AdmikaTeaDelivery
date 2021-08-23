@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/gradient.xml" value="0.140625" />
+        <entry key="app/src/main/res/drawable/ic_check.xml" value="0.140625" />
         <entry key="app/src/main/res/drawable/okrugl.xml" value="0.2212962962962963" />
         <entry key="app/src/main/res/drawable/okrugl_dialog.xml" value="0.140625" />
         <entry key="app/src/main/res/drawable/okrugl_dialog_options.xml" value="0.140625" />
@@ -12,9 +13,14 @@
         <entry key="app/src/main/res/drawable/radio_button_pressed.xml" value="0.140625" />
         <entry key="app/src/main/res/drawable/radio_group.xml" value="0.140625" />
         <entry key="app/src/main/res/drawable/radiobutton_selector.xml" value="0.140625" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.12447916666666667" />
         <entry key="app/src/main/res/layout/category_item_menu.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/dialog_item_menu.xml" value="0.14447463768115942" />
+        <entry key="app/src/main/res/layout/fragment_check.xml" value="0.11041666666666666" />
+        <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.12447916666666667" />
+        <entry key="app/src/main/res/layout/fragment_report.xml" value="0.12447916666666667" />
         <entry key="app/src/main/res/layout/item_menu_recyclerview.xml" value="0.14447463768115942" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.12447916666666667" />
       </map>
     </option>
   </component>

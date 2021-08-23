@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_menu" />
 
     <fragment
+        android:id="@+id/check_fragment"
+        android:name="com.newAdmilaTea.newadmilatea.ui.checkfragment.CheckFragment"
+        android:label="Check"
+        tools:layout="@layout/fragment_check" />
+
+    <fragment
         android:id="@+id/report_fragment"
         android:name="com.newAdmilaTea.newadmilatea.ui.reportfragment.ReportFragment"
         android:label="@string/title_dashboard"
