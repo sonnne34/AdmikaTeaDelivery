@@ -24,8 +24,8 @@ class MenuFragment : Fragment() {
     private lateinit var binding : FragmentMenuBinding
 
     private lateinit var menuAdapter : MenuAdapter
-    private  var menulist : ArrayList<ItemMenu> = ArrayList()
-    private lateinit var recyclerView : RecyclerView
+    private  var menulist : ArrayList<CatMenuModel> = ArrayList()
+
 
 
 
@@ -44,22 +44,15 @@ class MenuFragment : Fragment() {
         binding.recuclerMenu.setItemViewCacheSize(300)
         binding.recuclerMenu.isDrawingCacheEnabled = true
         loadMenu()
-        var tt = ItemMenu()
-        tt.Description = "GGG"
-        var ee = ItemMenu()
-        ee.Description = "LLL"
 
-        menulist.add(tt)
-        menulist.add(ee)
 
-        updateAdapter(menulist)
+
+
 
         return binding.root
     }
 
-    private fun updateAdapter(menuList : ArrayList<ItemMenu>) {
-        menuAdapter.setupMenu(menuList)
-    }
+
 
 
 
@@ -76,14 +69,12 @@ class MenuFragment : Fragment() {
 
 
                 for (ds in dataSnapshot.children) {
-
                     val value = ds.getValue(CatMenuModel::class.java)!!
 
                     Log.d("RESS", "value = 5" + value.CategoryName)
-
-
+                    menulist.add(value)
                 }
-
+                updateAdapter(menulist)
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -91,6 +82,10 @@ class MenuFragment : Fragment() {
                 Log.w("dima", "Failed to read value.", error.toException())
             }
         })
+    }
+
+    private fun updateAdapter(menuList : ArrayList<CatMenuModel>) {
+        menuAdapter.setupMenu(menuList)
     }
 
 
