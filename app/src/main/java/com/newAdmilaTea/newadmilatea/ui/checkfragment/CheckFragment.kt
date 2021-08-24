@@ -11,6 +11,7 @@ import com.example.adminkatea.adapter.CheckAdapter
 import com.newAdmilaTea.newadmilatea.R
 import com.newAdmilaTea.newadmilatea.databinding.FragmentCheckBinding
 import com.newAdmilaTea.newadmilatea.model.MenuModelcatMenu
+import com.newAdmilaTea.newadmilatea.singleton.BasketSingleton
 import java.util.ArrayList
 
 
@@ -18,7 +19,7 @@ class CheckFragment : Fragment() {
 
   private lateinit var binding : FragmentCheckBinding
   private lateinit var checkAdapter: CheckAdapter
-  private var listItem : ArrayList<String> = ArrayList()
+  private var listItem : ArrayList<MenuModelcatMenu> = ArrayList()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,15 +34,14 @@ class CheckFragment : Fragment() {
         binding.checkRecycler.setItemViewCacheSize(300)
         binding.checkRecycler.isDrawingCacheEnabled = true
 
-        listItem.add("GhR")
-        listItem.add("sdas")
 
+        listItem.addAll(BasketSingleton.basketItem)
         loadItem(listItem)
 
         return binding.root
     }
 
-    private fun loadItem(list : ArrayList<String>) {
+    private fun loadItem(list : ArrayList<MenuModelcatMenu>) {
         checkAdapter.setupCheck(list)
     }
 

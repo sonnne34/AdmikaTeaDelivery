@@ -14,12 +14,12 @@ import com.newAdmilaTea.newadmilatea.R
 import com.newAdmilaTea.newadmilatea.model.MenuModelcatMenu
 
 class CheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var mItemCheckList: ArrayList<String> = ArrayList()
+    var mItemCheckList: ArrayList<MenuModelcatMenu> = ArrayList()
 
 
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setupCheck(checkList: ArrayList<String>){
+    fun setupCheck(checkList: ArrayList<MenuModelcatMenu>){
         mItemCheckList.clear()
         mItemCheckList.addAll(checkList)
         notifyDataSetChanged()
@@ -47,8 +47,8 @@ class CheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
    class Holderitem(itemView : View) : RecyclerView.ViewHolder(itemView){
         var  textView: TextView = itemView.findViewById(R.id.text_check_adapter)
-      fun bind(itemView: String){
-           textView.text = itemView
+      fun bind(itemView: MenuModelcatMenu){
+           textView.text = itemView.Items?.Name
        }
    }
 
