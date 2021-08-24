@@ -19,6 +19,7 @@
         <entry key="app/src/main/res/layout/fragment_check.xml" value="0.11041666666666666" />
         <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.12447916666666667" />
         <entry key="app/src/main/res/layout/fragment_report.xml" value="0.12447916666666667" />
+        <entry key="app/src/main/res/layout/item_check_adapter.xml" value="0.1983695652173913" />
         <entry key="app/src/main/res/layout/item_menu_recyclerview.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.12447916666666667" />
       </map>

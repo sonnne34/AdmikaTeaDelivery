@@ -5,19 +5,44 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.adminkatea.adapter.CheckAdapter
 import com.newAdmilaTea.newadmilatea.R
+import com.newAdmilaTea.newadmilatea.databinding.FragmentCheckBinding
+import com.newAdmilaTea.newadmilatea.model.MenuModelcatMenu
+import java.util.ArrayList
 
 
 class CheckFragment : Fragment() {
 
-
+  private lateinit var binding : FragmentCheckBinding
+  private lateinit var checkAdapter: CheckAdapter
+  private var listItem : ArrayList<String> = ArrayList()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var root = inflater.inflate(R.layout.fragment_check, container, false)
-        // Inflate the layout for this fragment
-        return root
+        var binding = FragmentCheckBinding.inflate(layoutInflater)
+        checkAdapter = CheckAdapter()
+        binding.checkRecycler.adapter = checkAdapter
+        binding.checkRecycler.layoutManager = LinearLayoutManager(binding.root.context,
+            RecyclerView.VERTICAL,false)
+        binding.checkRecycler.setHasFixedSize(true)
+        binding.checkRecycler.recycledViewPool.setMaxRecycledViews(100, 100)
+        binding.checkRecycler.setItemViewCacheSize(300)
+        binding.checkRecycler.isDrawingCacheEnabled = true
+
+        listItem.add("GhR")
+        listItem.add("sdas")
+
+        loadItem(listItem)
+
+        return binding.root
+    }
+
+    private fun loadItem(list : ArrayList<String>) {
+        checkAdapter.setupCheck(list)
     }
 
 
