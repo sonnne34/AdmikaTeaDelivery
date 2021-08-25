@@ -15,13 +15,30 @@
         android:id="@+id/check_fragment"
         android:name="com.newAdmilaTea.newadmilatea.ui.checkfragment.CheckFragment"
         android:label="Check"
-        tools:layout="@layout/fragment_check" />
+        tools:layout="@layout/fragment_check" >
+
+        <action
+            android:id="@+id/action_checkfragment_to_contolChekFragment"
+            app:destination="@id/control_check_fragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/report_fragment"
         android:name="com.newAdmilaTea.newadmilatea.ui.reportfragment.ReportFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_report" />
+        tools:layout="@layout/fragment_report" >
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/control_check_fragment"
+        android:name="com.newAdmilaTea.newadmilatea.ui.reportfragment.ReportFragment"
+        android:label="Control_check_fragment"
+        tools:layout="@layout/fragment_control_check">
+
+
+    </fragment>
 
 
 </navigation>

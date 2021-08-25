@@ -13,6 +13,7 @@ import com.newAdmilaTea.newadmilatea.R
 import com.newAdmilaTea.newadmilatea.dialog.CountDialog
 import com.newAdmilaTea.newadmilatea.model.CatMenuModel
 import com.newAdmilaTea.newadmilatea.model.MenuModelcatMenu
+import com.newAdmilaTea.newadmilatea.singleton.BasketSingleton
 
 class MenuAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var mItemMenuList: ArrayList<MenuModelcatMenu> = ArrayList()
@@ -140,14 +141,14 @@ class MenuAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
             Log.d("Color", "menu = " + menuCategoryModel)
 
-//            var rr = BasketSingleton.checkingThelist(menuCategoryModel)
-//            Log.d("Color", "Bolean = " + rr)
+            var rr = BasketSingleton.checkingThelist(menuCategoryModel)
+            Log.d("Color", "Bolean = " + rr)
 
-//            if (rr == true) {
-//                checkBoxItem.setBackgroundResource(R.color.qgreen)
-//            } else {
-//                checkBoxItem.setBackgroundResource(R.color.transparent)
-//            }
+            if (rr == true) {
+                checkBoxItem.setBackgroundResource(R.color.qgreen)
+            } else {
+                checkBoxItem.setBackgroundResource(R.color.transparent)
+            }
         }
     }
 

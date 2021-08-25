@@ -15,10 +15,12 @@ import com.example.adminkatea.model.ItemMenu
 import com.google.firebase.database.*
 import com.google.firebase.database.FirebaseDatabase
 import com.newAdmilaTea.newadmilatea.databinding.FragmentMenuBinding
+import com.newAdmilaTea.newadmilatea.listener.EventListenerss
 import com.newAdmilaTea.newadmilatea.model.CatMenuModel
+import com.newAdmilaTea.newadmilatea.singleton.BasketSingleton
 
 
-class MenuFragment : Fragment() {
+class MenuFragment : Fragment(), EventListenerss {
 
 
     private lateinit var binding : FragmentMenuBinding
@@ -35,7 +37,7 @@ class MenuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMenuBinding.inflate(layoutInflater)
-
+        BasketSingleton.subscribe(this)
         menuAdapter = MenuAdapter()
         binding.recuclerMenu.adapter = menuAdapter
         binding.recuclerMenu.layoutManager = LinearLayoutManager(binding.root.context,RecyclerView.VERTICAL,false)
@@ -43,6 +45,7 @@ class MenuFragment : Fragment() {
         binding.recuclerMenu.recycledViewPool.setMaxRecycledViews(100, 100)
         binding.recuclerMenu.setItemViewCacheSize(300)
         binding.recuclerMenu.isDrawingCacheEnabled = true
+
         loadMenu()
 
 
@@ -86,6 +89,10 @@ class MenuFragment : Fragment() {
 
     private fun updateAdapter(menuList : ArrayList<CatMenuModel>) {
         menuAdapter.setupMenu(menuList)
+    }
+
+    override fun updateRR() {
+        updateAdapter(menulist)
     }
 
 

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.adminkatea.adapter.CheckAdapter
+import com.newAdmilaTea.newadmilatea.MainActivity
 import com.newAdmilaTea.newadmilatea.R
 import com.newAdmilaTea.newadmilatea.databinding.FragmentCheckBinding
 import com.newAdmilaTea.newadmilatea.model.MenuModelcatMenu
@@ -37,6 +38,12 @@ class CheckFragment : Fragment() {
 
         listItem.addAll(BasketSingleton.basketItem)
         loadItem(listItem)
+
+
+        binding.buttonNext.setOnClickListener {
+            var main = (activity as MainActivity)
+            main.toGOcontolCheckFragment()
+        }
 
         return binding.root
     }

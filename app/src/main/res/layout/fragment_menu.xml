@@ -5,8 +5,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.menufragment.MenuFragment">
 
+   <TextView
+       android:id="@+id/text_choose"
+       android:layout_centerHorizontal="true"
+       android:background="#284223"
+       android:textSize="30dp"
+       android:textColor="#E2ECE7"
+       android:text="Выбираем Элементы:"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"/>
+
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/recucler_menu"
+       android:layout_below="@+id/text_choose"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"/>
 
