@@ -1,17 +1,22 @@
 package com.example.adminkatea.adapter
 
 import android.annotation.SuppressLint
+import android.util.Log
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 
 import com.newAdmilaTea.newadmilatea.R
+import com.newAdmilaTea.newadmilatea.dialog.CountDialog
 
 import com.newAdmilaTea.newadmilatea.model.MenuModelcatMenu
+import com.newAdmilaTea.newadmilatea.singleton.BasketSingleton
 
 class CheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var mItemCheckList: ArrayList<MenuModelcatMenu> = ArrayList()
@@ -41,16 +46,55 @@ class CheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is Holderitem){
-            holder.bind(itemView = mItemCheckList[position])
+            holder.bind(itemView1 = mItemCheckList[position])
+            btnDel(holder, position)
         }
     }
 
    class Holderitem(itemView : View) : RecyclerView.ViewHolder(itemView){
-        var  textView: TextView = itemView.findViewById(R.id.text_check_adapter)
-      fun bind(itemView: MenuModelcatMenu){
-           textView.text = itemView.Items?.Name
+       var  textname: TextView = itemView.findViewById(R.id.text_name_item)
+       var  textlastCost: TextView = itemView.findViewById(R.id.lastCost)
+       var  textnewCost: TextView = itemView.findViewById(R.id.newCost)
+       var  btnDel: Button = itemView.findViewById(R.id.btn_del_)
+      fun bind(itemView1: MenuModelcatMenu){
+          textname.text = itemView1.Items?.Name
+          textlastCost.text = itemView1.Items?.Cost.toString()
+          textnewCost.text = itemView1.Items?.newCost.toString()
+
+          itemView.setOnClickListener {
+
+              CountDialog.openDialog(itemView.context, itemView1)
+
+          }
+
        }
+
+
    }
+
+    private fun btnDel(holder: RecyclerView.ViewHolder, position: Int){
+        if(holder is Holderitem ){
+            holder.bind(itemView1 = mItemCheckList[position])
+            holder.btnDel.setOnClickListener {
+
+                val delPosDialog = AlertDialog.Builder(holder.itemView.context
+                )
+                delPosDialog.setTitle("Аннигилирование")
+                delPosDialog.setMessage("Удалить блюдо?")
+                delPosDialog.setPositiveButton(
+                    "Да"
+                ) { _, _ ->
+                    BasketSingleton.delPos(position)
+                    BasketSingleton.notifyTwo()
+                    Log.d("list", "del= ${mItemCheckList}")
+                }
+                delPosDialog.setNegativeButton(
+                    "Ой, нет!"
+                ) { _, _ -> }
+                delPosDialog.show()
+            }
+        }
+    }
 
 
 }

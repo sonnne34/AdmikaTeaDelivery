@@ -11,12 +11,13 @@ import com.example.adminkatea.adapter.CheckAdapter
 import com.newAdmilaTea.newadmilatea.MainActivity
 import com.newAdmilaTea.newadmilatea.R
 import com.newAdmilaTea.newadmilatea.databinding.FragmentCheckBinding
+import com.newAdmilaTea.newadmilatea.listener.EventListenerss
 import com.newAdmilaTea.newadmilatea.model.MenuModelcatMenu
 import com.newAdmilaTea.newadmilatea.singleton.BasketSingleton
 import java.util.ArrayList
 
 
-class CheckFragment : Fragment() {
+class CheckFragment : Fragment(), EventListenerss {
 
   private lateinit var binding : FragmentCheckBinding
   private lateinit var checkAdapter: CheckAdapter
@@ -34,7 +35,7 @@ class CheckFragment : Fragment() {
         binding.checkRecycler.recycledViewPool.setMaxRecycledViews(100, 100)
         binding.checkRecycler.setItemViewCacheSize(300)
         binding.checkRecycler.isDrawingCacheEnabled = true
-
+        BasketSingleton.subscribe(this)
 
         listItem.addAll(BasketSingleton.basketItem)
         loadItem(listItem)
@@ -50,6 +51,13 @@ class CheckFragment : Fragment() {
 
     private fun loadItem(list : ArrayList<MenuModelcatMenu>) {
         checkAdapter.setupCheck(list)
+    }
+
+    override fun updateRR() {
+        var menufile = BasketSingleton.basketItem
+
+
+        checkAdapter.setupCheck(menufile)
     }
 
 

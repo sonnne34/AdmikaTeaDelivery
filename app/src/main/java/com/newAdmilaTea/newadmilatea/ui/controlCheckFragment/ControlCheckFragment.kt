@@ -12,6 +12,7 @@ import com.newAdmilaTea.newadmilatea.R
 import com.newAdmilaTea.newadmilatea.databinding.FragmentCheckBinding
 import com.newAdmilaTea.newadmilatea.databinding.FragmentControlCheckBinding
 import com.newAdmilaTea.newadmilatea.model.MenuModelcatMenu
+import com.newAdmilaTea.newadmilatea.singleton.BasketSingleton
 
 
 class ControlCheckFragment : Fragment() {
@@ -34,9 +35,8 @@ class ControlCheckFragment : Fragment() {
         binding.checkControlRecycler.setItemViewCacheSize(300)
         binding.checkControlRecycler.isDrawingCacheEnabled = true
 
-        var ten = MenuModelcatMenu()
-        ten.Items?.Name =  "Hello"
-        list.add(ten)
+
+        list.addAll(BasketSingleton.basketItem)
         setupAdapter(list)
         return binding.root
     }

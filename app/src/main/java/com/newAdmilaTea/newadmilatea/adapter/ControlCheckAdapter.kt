@@ -46,9 +46,13 @@ class ControlCheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
    class Holderitem(itemView : View) : RecyclerView.ViewHolder(itemView){
-        var  textView: TextView = itemView.findViewById(R.id.text_check_adapter)
+        var  textname: TextView = itemView.findViewById(R.id.text_name_item)
+        var  textlastCost: TextView = itemView.findViewById(R.id.lastCost)
+        var  textnewCost: TextView = itemView.findViewById(R.id.newCost)
       fun bind(itemView: MenuModelcatMenu){
-           textView.text = itemView.Items?.Name
+          textname.text = itemView.Items?.Name
+          textlastCost.text = itemView.Items?.Cost.toString()
+          textnewCost.text = itemView.Items?.newCost.toString()
        }
    }
 
