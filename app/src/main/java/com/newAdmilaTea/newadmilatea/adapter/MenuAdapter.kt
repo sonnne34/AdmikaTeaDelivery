@@ -1,6 +1,7 @@
 package com.example.adminkatea.adapter
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,18 +9,23 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.adminkatea.model.ItemMenu
+import com.google.firebase.storage.FirebaseStorage
 import com.newAdmilaTea.newadmilatea.R
 import com.newAdmilaTea.newadmilatea.dialog.CountDialog
 import com.newAdmilaTea.newadmilatea.model.CatMenuModel
 import com.newAdmilaTea.newadmilatea.model.MenuModelcatMenu
 import com.newAdmilaTea.newadmilatea.singleton.BasketSingleton
 
-class MenuAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MenuAdapter(context: Context): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var mItemMenuList: ArrayList<MenuModelcatMenu> = ArrayList()
 
     private val LAYOUT_HEADER = 0
     private val LAYOUT_CHILD = 1
+
+    private val glide = Glide.with(context)
 
     @SuppressLint("NotifyDataSetChanged")
     fun setupMenu(menuList: ArrayList<CatMenuModel>){
@@ -90,7 +96,7 @@ class MenuAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
-    class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+   inner class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         private var name: TextView = itemView.findViewById(R.id.text_roll)
         private var discription: TextView = itemView.findViewById(R.id.discription_text)
         private var cost: TextView = itemView.findViewById(R.id.txt_roll_price)
@@ -112,7 +118,20 @@ class MenuAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 wt.visibility = View.VISIBLE
                 wt.text = "$wtVal гр."
             }
-
+            if (menuCategoryModel.Items?.PictureForLoad == null) {
+                val storage = FirebaseStorage.getInstance()
+                val storageRef = storage.getReferenceFromUrl(menuCategoryModel.Items?.Picture!!)
+                storageRef.downloadUrl.addOnSuccessListener { uri ->
+                    menuCategoryModel.Items?.PictureForLoad = uri
+                    val img = glide.load(uri)
+                    img.diskCacheStrategy(DiskCacheStrategy.NONE)
+                    img.into(imgDish)
+                }
+            } else {
+                val img = glide.load(menuCategoryModel.Items?.PictureForLoad)
+                img.diskCacheStrategy(DiskCacheStrategy.NONE)
+                img.into(imgDish)
+            }
 
 
 

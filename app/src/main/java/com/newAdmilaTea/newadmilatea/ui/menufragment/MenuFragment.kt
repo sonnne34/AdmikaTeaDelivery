@@ -38,7 +38,11 @@ class MenuFragment : Fragment(), EventListenerss {
     ): View? {
         binding = FragmentMenuBinding.inflate(layoutInflater)
         BasketSingleton.subscribe(this)
-        menuAdapter = MenuAdapter()
+
+            menuAdapter = MenuAdapter(inflater.context)
+
+
+
         binding.recuclerMenu.adapter = menuAdapter
         binding.recuclerMenu.layoutManager = LinearLayoutManager(binding.root.context,RecyclerView.VERTICAL,false)
         binding.recuclerMenu.setHasFixedSize(true)

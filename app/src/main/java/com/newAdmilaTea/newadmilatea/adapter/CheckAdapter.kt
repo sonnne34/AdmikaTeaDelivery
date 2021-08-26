@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.storage.FirebaseStorage
 
 import com.newAdmilaTea.newadmilatea.R
 import com.newAdmilaTea.newadmilatea.dialog.CountDialog
@@ -60,6 +61,9 @@ class CheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
           textname.text = itemView1.Items?.Name
           textlastCost.text = itemView1.Items?.Cost.toString()
           textnewCost.text = itemView1.Items?.newCost.toString()
+
+
+
 
           itemView.setOnClickListener {
 
