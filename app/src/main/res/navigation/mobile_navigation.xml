@@ -2,14 +2,17 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/menufragment">
+    android:id="@+id/mobile_navigation">
 
     <fragment
         android:id="@+id/menufragment"
         android:name="com.newAdmilaTea.newadmilatea.ui.menufragment.MenuFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_menu" />
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menufragment_to_check_fragment"
+            app:destination="@id/check_fragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/check_fragment"
@@ -38,6 +41,9 @@
         tools:layout="@layout/fragment_control_check">
 
 
+        <action
+            android:id="@+id/action_control_check_fragment_to_menufragment"
+            app:destination="@id/menufragment" />
     </fragment>
 
 

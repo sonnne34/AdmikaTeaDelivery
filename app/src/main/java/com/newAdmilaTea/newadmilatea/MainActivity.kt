@@ -10,7 +10,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.newAdmilaTea.newadmilatea.databinding.ActivityMainBinding
+import com.newAdmilaTea.newadmilatea.ui.checkfragment.CheckFragment
 import com.newAdmilaTea.newadmilatea.ui.controlCheckFragment.ControlCheckFragment
+import com.newAdmilaTea.newadmilatea.ui.menufragment.MenuFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,6 +33,45 @@ class MainActivity : AppCompatActivity() {
 
       
         navView.setupWithNavController(navController)
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.nav_host_fragment_activity_main,MenuFragment())
+            .commit()
+
+
+        navView.setOnNavigationItemReselectedListener { item ->
+            when (item.itemId) {
+                R.id.menufragment -> {
+//                    Toast.makeText(this, "Вы уже в меню", Toast.LENGTH_SHORT).show()
+                }
+                R.id.check_fragment-> {
+
+                }
+                R.id.report_fragment->{}
+            }
+        }
+
+
+        navView.setOnNavigationItemSelectedListener{item ->
+            when (item.itemId) {
+                R.id.menufragment -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.nav_host_fragment_activity_main,MenuFragment())
+                        .commit()
+                }
+                R.id.check_fragment -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.nav_host_fragment_activity_main,CheckFragment())
+                        .commit()
+                }
+                R.id.report_fragment -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.nav_host_fragment_activity_main,CheckFragment())
+                        .commit()
+                }
+            }
+            true
+        }
     }
 
     fun toGOcontolCheckFragment(){
