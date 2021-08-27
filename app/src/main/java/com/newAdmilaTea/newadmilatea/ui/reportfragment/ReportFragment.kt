@@ -1,40 +1,103 @@
 package com.newAdmilaTea.newadmilatea.ui.reportfragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
 import androidx.fragment.app.Fragment
+import com.google.firebase.database.*
 import com.newAdmilaTea.newadmilatea.databinding.FragmentReportBinding
+import com.newAdmilaTea.newadmilatea.model.CatMenuModel
+import com.newAdmilaTea.newadmilatea.model.model1
 
 
 class ReportFragment : Fragment() {
 
 
-    private var _binding: FragmentReportBinding? = null
+   lateinit var binding: FragmentReportBinding
+   lateinit var mDataBase: DatabaseReference
+   var list2 : ArrayList<model1> = ArrayList()
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding = FragmentReportBinding.inflate(layoutInflater)
+
+        binding.btn.setOnClickListener {
+            mDataBase = FirebaseDatabase.getInstance().getReference("User")
 
 
-        _binding = FragmentReportBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+            var name = binding.editeName.text.toString()
+            var suname = binding.editeSuname.text.toString()
+            var newUser = model1()
+            newUser.name1 = name
+            newUser.suname1 = suname
+            mDataBase.push().setValue(newUser)
+        }
+
+        binding.btnLoad.setOnClickListener {
+
+            var myRef = FirebaseDatabase.getInstance().getReference("User")
+            myRef.addValueEventListener(object : ValueEventListener {
+
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                    for (ds in dataSnapshot.children) {
+                        val value = ds.getValue(model1::class.java)!!
+
+                        list2.add(value)
+                    }
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Failed to read value
+                    Log.w("dima", "Failed to read value.", error.toException())
+                }
+            })
+
+        }
+
+        binding.btnReplays.setOnClickListener {
+            mDataBase = FirebaseDatabase.getInstance().getReference("User")
+            var list : ArrayList<model1> = ArrayList()
+
+            for( i in list2){
+                var newModel = model1()
+                newModel.name1 = i.name1
+                newModel.suname1 = i.suname1
+                newModel.from1 = "JARGO"
+                list.add(newModel)
+                Log.d("PETRO","list = ${i.name1}")
+            }
+
+            mDataBase.ref.setValue(list)
+
+
+//            val name = binding.editeName.text.toString()
+//            val suname = binding.editeSuname.text.toString()
+//            val from = binding.editeFrom.text.toString()
+//            val newUser = model1()
+//            newUser.name1 = name
+//            newUser.suname1 = suname
+//            newUser.from1 =  from
+//            mDataBase.ref.setValue(newUser)
+
+        }
 
 
 
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+
     }
 }
