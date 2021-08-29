@@ -71,8 +71,7 @@ class ReportFragment : Fragment() {
 
             for (i in list){
                 Log.d("TEXP","${i.CategoryNameENG}")
-                Log.d("TEXP","${i.Items?.NameENG}")
-                Log.d("TEXP","${i.CategoryName}")
+
             }
 
             var nn = "AEJapanese"

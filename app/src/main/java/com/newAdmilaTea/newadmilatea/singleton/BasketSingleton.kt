@@ -65,9 +65,9 @@ object BasketSingleton {
 
     fun showBasket(){
         for(i in basketItem){
-            var yy = i.Items?.Name
 
-            Log.d("Basket", "Items = "  + yy)
+
+            Log.d("Basket", "Items = "  + i.CategoryNameENG)
         }
     }
 

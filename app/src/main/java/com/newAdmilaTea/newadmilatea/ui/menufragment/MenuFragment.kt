@@ -79,6 +79,7 @@ class MenuFragment : Fragment(), EventListenerss {
                 for (ds in dataSnapshot.children) {
                     val value = ds.getValue(CatMenuModel::class.java)!!
 
+                Log.d("URES","${value.CategoryNameENG}")
 
                     menulist.add(value)
                 }
