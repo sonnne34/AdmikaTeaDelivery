@@ -28,7 +28,7 @@ class ControlCheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         var layoutInflater = LayoutInflater.from(parent.context)
-        var itemView = layoutInflater.inflate(R.layout.item_check_adapter, parent, false)
+        var itemView = layoutInflater.inflate(R.layout.item_check_adapter_two, parent, false)
         return Holderitem(itemView = itemView)
     }
 

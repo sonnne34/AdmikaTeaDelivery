@@ -13,6 +13,7 @@ import com.newAdmilaTea.newadmilatea.databinding.ActivityMainBinding
 import com.newAdmilaTea.newadmilatea.ui.checkfragment.CheckFragment
 import com.newAdmilaTea.newadmilatea.ui.controlCheckFragment.ControlCheckFragment
 import com.newAdmilaTea.newadmilatea.ui.menufragment.MenuFragment
+import com.newAdmilaTea.newadmilatea.ui.reportfragment.ReportFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -66,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.report_fragment -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.nav_host_fragment_activity_main,CheckFragment())
+                        .replace(R.id.nav_host_fragment_activity_main,ReportFragment())
                         .commit()
                 }
             }

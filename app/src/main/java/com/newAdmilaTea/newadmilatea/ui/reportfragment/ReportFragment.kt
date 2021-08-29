@@ -11,6 +11,7 @@ import com.google.firebase.database.*
 import com.newAdmilaTea.newadmilatea.databinding.FragmentReportBinding
 import com.newAdmilaTea.newadmilatea.model.CatMenuModel
 import com.newAdmilaTea.newadmilatea.model.model1
+import com.newAdmilaTea.newadmilatea.singleton.BasketSingleton
 
 
 class ReportFragment : Fragment() {
@@ -65,31 +66,31 @@ class ReportFragment : Fragment() {
         }
 
         binding.btnReplays.setOnClickListener {
-            mDataBase = FirebaseDatabase.getInstance().getReference("User")
-            var list : ArrayList<model1> = ArrayList()
 
-            for( i in list2){
-                var newModel = model1()
-                newModel.name1 = i.name1
-                newModel.suname1 = i.suname1
-                newModel.from1 = "JARGO"
-                list.add(newModel)
-                Log.d("PETRO","list = ${i.name1}")
+            var  list = BasketSingleton.basketItem
+
+            for (i in list){
+                Log.d("TEXP","${i.CategoryNameENG}")
+                Log.d("TEXP","${i.Items?.NameENG}")
+                Log.d("TEXP","${i.CategoryName}")
             }
 
-            mDataBase.ref.setValue(list)
+            var nn = "AEJapanese"
+            var ss = "Match"
+            mDataBase = FirebaseDatabase.getInstance().getReference("RestaurantsMenu/TeaTemple/"+ nn +"/Items/"+ ss + "/NewCost")
 
 
-//            val name = binding.editeName.text.toString()
-//            val suname = binding.editeSuname.text.toString()
-//            val from = binding.editeFrom.text.toString()
-//            val newUser = model1()
-//            newUser.name1 = name
-//            newUser.suname1 = suname
-//            newUser.from1 =  from
-//            mDataBase.ref.setValue(newUser)
 
-        }
+
+
+
+//            mDataBase.ref.setValue(i.Items?.newCost)
+            }
+
+
+
+
+
 
 
 

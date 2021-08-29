@@ -70,6 +70,7 @@ class MenuFragment : Fragment(), EventListenerss {
 
         val myRef = database.getReference("RestaurantsMenu/TeaTemple")
 
+
         myRef.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -78,7 +79,7 @@ class MenuFragment : Fragment(), EventListenerss {
                 for (ds in dataSnapshot.children) {
                     val value = ds.getValue(CatMenuModel::class.java)!!
 
-                    Log.d("RESS", "value = 5" + value.CategoryName)
+
                     menulist.add(value)
                 }
                 updateAdapter(menulist)

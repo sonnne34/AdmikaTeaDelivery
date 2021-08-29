@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/text_name_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/lastCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_name_item"
+        android:background="#F44336"
+        android:text="lastCost"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/newCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lastCost"
+        android:background="#FFEB3B"
+        android:text="newCost"
+        android:textSize="30dp" />
+
+    <Button
+        android:id="@+id/btn_del_"
+        android:text="удалить"
+        android:backgroundTint="#234234"
+        android:layout_below="@+id/newCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
