@@ -66,25 +66,25 @@ class ReportFragment : Fragment() {
         }
 
         binding.btnReplays.setOnClickListener {
-
-            var  list = BasketSingleton.basketItem
-
-            for (i in list){
-                Log.d("TEXP","${i.CategoryNameENG}")
-                Log.d("TEXP","${i.Items?.NameENG}")
-                Log.d("TEXP","${i.CategoryName}")
-            }
-
-            var nn = "AEJapanese"
-            var ss = "Match"
-            mDataBase = FirebaseDatabase.getInstance().getReference("RestaurantsMenu/TeaTemple/"+ nn +"/Items/"+ ss + "/NewCost")
-
-
-
-
+//
+//            var  list = BasketSingleton.basketItem
+//            var categoryNameENG : String
+//            var nameENG : String
+//            for (i in list){
+//               categoryNameENG = i.Items?.CategoryNameENG.toString()
+//               nameENG = i.Items?.NameENG.toString()
+//                Log.d("UREX","$nameENG")
+//                Log.d("UREX","$categoryNameENG")
+//                Log.d("UREX","${i.Items?.newCost}")
+//                Log.d("UREX","${"RestaurantsMenu/TeaTemple/"+categoryNameENG+"/Items/"+ nameENG + "/NewCost"}")
+//                mDataBase = FirebaseDatabase.getInstance().getReference("RestaurantsMenu/TeaTemple/"+categoryNameENG+"/Items/"+ nameENG + "/NewCost")
+//                mDataBase.ref.setValue(i.Items?.newCost)
+//            }
 
 
-//            mDataBase.ref.setValue(i.Items?.newCost)
+
+
+
             }
 
 

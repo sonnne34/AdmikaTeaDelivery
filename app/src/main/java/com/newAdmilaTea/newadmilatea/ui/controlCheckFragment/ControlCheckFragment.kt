@@ -1,6 +1,7 @@
 package com.newAdmilaTea.newadmilatea.ui.controlCheckFragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.adminkatea.adapter.ControlCheckAdapter
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.newAdmilaTea.newadmilatea.R
 import com.newAdmilaTea.newadmilatea.databinding.FragmentCheckBinding
 import com.newAdmilaTea.newadmilatea.databinding.FragmentControlCheckBinding
@@ -19,6 +22,7 @@ class ControlCheckFragment : Fragment() {
 
     private lateinit var binding : FragmentControlCheckBinding
     lateinit var adapterControlAdapter : ControlCheckAdapter
+    lateinit var mDataBase: DatabaseReference
     var list : ArrayList<MenuModelcatMenu> = ArrayList()
 
     override fun onCreateView(
@@ -38,6 +42,27 @@ class ControlCheckFragment : Fragment() {
 
         list.addAll(BasketSingleton.basketItem)
         setupAdapter(list)
+
+        binding.btnNext.setOnClickListener {
+            var  list = BasketSingleton.basketItem
+            var categoryNameENG : String
+            var nameENG : String
+            for (i in list) {
+                categoryNameENG = i.Items?.CategoryNameENG.toString()
+                nameENG = i.Items?.NameENG.toString()
+                Log.d("UREX", "$nameENG")
+                Log.d("UREX", "$categoryNameENG")
+                Log.d("UREX", "${i.Items?.newCost}")
+                Log.d(
+                    "UREX",
+                    "${"RestaurantsMenu/TeaTemple/" + categoryNameENG + "/Items/" + nameENG + "/NewCost"}"
+                )
+                mDataBase = FirebaseDatabase.getInstance()
+                    .getReference("RestaurantsMenu/TeaTemple/" + categoryNameENG + "/Items/" + nameENG + "/NewCost")
+                mDataBase.ref.setValue(i.Items?.newCost)
+            }
+
+        }
         return binding.root
     }
 

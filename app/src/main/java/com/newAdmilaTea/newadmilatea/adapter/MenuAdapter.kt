@@ -111,6 +111,8 @@ class MenuAdapter(context: Context): RecyclerView.Adapter<RecyclerView.ViewHolde
             discription.text = "${menuCategoryModel.Items?.Description}"
             cost.text = "${menuCategoryModel.Items?.Cost}" + " р."
 
+
+
             val wtVal = menuCategoryModel.Items?.Wt
             if(wtVal?.toInt() == 0){
                 wt.visibility = View.GONE
@@ -137,6 +139,9 @@ class MenuAdapter(context: Context): RecyclerView.Adapter<RecyclerView.ViewHolde
 
 
             itemView.setOnClickListener {
+                Log.d("GERO","${menuCategoryModel.Items?.CategoryNameENG}")
+                Log.d("GERO","${menuCategoryModel.Items?.NameENG}")
+
                 CountDialog.openDialog(itemView.context, menuCategoryModel)
             }
 
