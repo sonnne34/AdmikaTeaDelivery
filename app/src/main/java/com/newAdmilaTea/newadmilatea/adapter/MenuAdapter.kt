@@ -33,8 +33,6 @@ class MenuAdapter(context: Context): RecyclerView.Adapter<RecyclerView.ViewHolde
         for(categoryModel in menuList) {
             var model = MenuModelcatMenu()
             model.CategoryName = categoryModel.CategoryName
-            model.CategoryNameENG = categoryModel.CategoryNameENG
-            Log.d("HE","${model.CategoryNameENG}")
             model.isHeader = true
             mItemMenuList.add(model)
 
@@ -93,8 +91,6 @@ class MenuAdapter(context: Context): RecyclerView.Adapter<RecyclerView.ViewHolde
 
         fun bindHeader(menuCategoryModel: MenuModelcatMenu) {
 
-            Log.d("FFF","${menuCategoryModel.CategoryName}")
-            Log.d("FFF","${menuCategoryModel.CategoryNameENG}")
             categoryHeader.text = "${menuCategoryModel.CategoryName}"
 
         }
@@ -141,7 +137,6 @@ class MenuAdapter(context: Context): RecyclerView.Adapter<RecyclerView.ViewHolde
 
 
             itemView.setOnClickListener {
-                Log.d("ERA","${menuCategoryModel.CategoryNameENG}")
                 CountDialog.openDialog(itemView.context, menuCategoryModel)
             }
 
