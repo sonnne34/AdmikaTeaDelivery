@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.controlCheckFragment.ControlCheckFragment">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
 
     <TextView
         android:id="@+id/text_control_check"
@@ -18,7 +25,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/check_control_recycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="500dp"
         android:layout_below="@+id/text_control_check" />
 
     <TextView
@@ -40,5 +47,5 @@
         android:backgroundTint="#FFEB3B"
         android:text="NEXT"
         android:textColor="#000000" />
-
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
