@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -18,8 +20,10 @@ import com.newAdmilaTea.newadmilatea.dialog.CountDialog
 import com.newAdmilaTea.newadmilatea.model.CatMenuModel
 import com.newAdmilaTea.newadmilatea.model.MenuModelcatMenu
 import com.newAdmilaTea.newadmilatea.singleton.BasketSingleton
+import java.util.*
+import kotlin.collections.ArrayList
 
-class MenuAdapter(context: Context): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MenuAdapter(context: Context): RecyclerView.Adapter<RecyclerView.ViewHolder>(), Filterable {
     var mItemMenuList: ArrayList<MenuModelcatMenu> = ArrayList()
 
     private val LAYOUT_HEADER = 0
@@ -44,6 +48,8 @@ class MenuAdapter(context: Context): RecyclerView.Adapter<RecyclerView.ViewHolde
         }
         notifyDataSetChanged()
     }
+
+
 
     override fun getItemViewType(position: Int): Int {
         if (mItemMenuList[position].isHeader) {
@@ -151,6 +157,8 @@ class MenuAdapter(context: Context): RecyclerView.Adapter<RecyclerView.ViewHolde
                 checkBoxItem.setBackgroundResource(R.color.transparent)
             }
         }
+
+
     }
 
     fun scrollToCategory(name: String): Int {
@@ -165,5 +173,33 @@ class MenuAdapter(context: Context): RecyclerView.Adapter<RecyclerView.ViewHolde
         }
         return position
     }
+
+   override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val charSearch = constraint.toString()
+                Log.d("RRRER","ASED = " + charSearch)
+
+                if (charSearch.isEmpty()) {
+
+                } else {
+
+
+                }
+                val filterResults = FilterResults()
+                filterResults.values =  mItemMenuList
+                return filterResults
+            }
+
+            @Suppress("UNCHECKED_CAST")
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                mItemMenuList = results?.values as ArrayList<MenuModelcatMenu>
+                notifyDataSetChanged()
+            }
+
+        }
+    }
+
+
 
 }

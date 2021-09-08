@@ -1,6 +1,7 @@
 package com.newAdmilaTea.newadmilatea
 
 import android.os.Bundle
+import android.view.Menu
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
@@ -73,7 +74,12 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+
+
     }
+
+
 
     fun toGOcontolCheckFragment(){
                supportFragmentManager

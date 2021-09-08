@@ -15,9 +15,16 @@
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"/>
 
+   <androidx.appcompat.widget.SearchView
+       android:id="@+id/Search_view"
+       android:layout_centerHorizontal="true"
+       android:layout_below="@+id/text_choose"
+       android:layout_width="300dp"
+       android:layout_height="wrap_content"/>
+
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/recucler_menu"
-       android:layout_below="@+id/text_choose"
+       android:layout_below="@+id/Search_view"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"/>
 
