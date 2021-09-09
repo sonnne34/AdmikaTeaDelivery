@@ -6,7 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".ui.reportfragment.ReportFragment">
 
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 
 </RelativeLayout>

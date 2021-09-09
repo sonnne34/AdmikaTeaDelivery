@@ -40,7 +40,7 @@ class MenuFragment : Fragment(), EventListenerss {
         binding = FragmentMenuBinding.inflate(layoutInflater)
         BasketSingleton.subscribe(this)
 
-            menuAdapter = MenuAdapter(inflater.context)
+        menuAdapter = MenuAdapter(inflater.context)
 
 
 
