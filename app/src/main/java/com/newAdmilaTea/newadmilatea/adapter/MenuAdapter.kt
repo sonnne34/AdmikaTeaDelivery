@@ -13,18 +13,17 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.adminkatea.model.ItemMenu
 import com.google.firebase.storage.FirebaseStorage
 import com.newAdmilaTea.newadmilatea.R
 import com.newAdmilaTea.newadmilatea.dialog.CountDialog
 import com.newAdmilaTea.newadmilatea.model.CatMenuModel
 import com.newAdmilaTea.newadmilatea.model.MenuModelcatMenu
 import com.newAdmilaTea.newadmilatea.singleton.BasketSingleton
-import java.util.*
 import kotlin.collections.ArrayList
 
 class MenuAdapter(context: Context): RecyclerView.Adapter<RecyclerView.ViewHolder>(), Filterable {
     var mItemMenuList: ArrayList<MenuModelcatMenu> = ArrayList()
+    var mMenuList: ArrayList<CatMenuModel>? = null
 
     private val LAYOUT_HEADER = 0
     private val LAYOUT_CHILD = 1
@@ -32,18 +31,19 @@ class MenuAdapter(context: Context): RecyclerView.Adapter<RecyclerView.ViewHolde
     private val glide = Glide.with(context)
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setupMenu(menuList: ArrayList<CatMenuModel>){
+    fun setupMenu(menuList: ArrayList<CatMenuModel>) {
         mItemMenuList.clear()
+        if (mMenuList == null) {
+            mMenuList = menuList
+        }
         for(categoryModel in menuList) {
-            var model = MenuModelcatMenu()
+            val model = MenuModelcatMenu()
             model.CategoryName = categoryModel.CategoryName
             model.isHeader = true
             mItemMenuList.add(model)
 
             for (i in categoryModel.Items) {
-                var item = MenuModelcatMenu()
-                item.Items = i.value
-                mItemMenuList.add(item)
+                mItemMenuList.add(MenuModelcatMenu(i.value))
             }
         }
         notifyDataSetChanged()
@@ -113,28 +113,28 @@ class MenuAdapter(context: Context): RecyclerView.Adapter<RecyclerView.ViewHolde
         @SuppressLint("ResourceAsColor", "SetTextI18n")
         fun bindMenu(menuCategoryModel: MenuModelcatMenu) {
 
-            name.text = "${menuCategoryModel.Items?.Name}"
-            discription.text = "${menuCategoryModel.Items?.Description}"
-            cost.text = "${menuCategoryModel.Items?.Cost}" + " р."
+            name.text = "${menuCategoryModel.Item?.Name}"
+            discription.text = "${menuCategoryModel.Item?.Description}"
+            cost.text = "${menuCategoryModel.Item?.Cost}" + " р."
 
-            val wtVal = menuCategoryModel.Items?.Wt
+            val wtVal = menuCategoryModel.Item?.Wt
             if(wtVal?.toInt() == 0){
                 wt.visibility = View.GONE
             }else {
                 wt.visibility = View.VISIBLE
                 wt.text = "$wtVal гр."
             }
-            if (menuCategoryModel.Items?.PictureForLoad == null) {
+            if (menuCategoryModel.Item?.PictureForLoad == null) {
                 val storage = FirebaseStorage.getInstance()
-                val storageRef = storage.getReferenceFromUrl(menuCategoryModel.Items?.Picture!!)
+                val storageRef = storage.getReferenceFromUrl(menuCategoryModel.Item?.Picture!!)
                 storageRef.downloadUrl.addOnSuccessListener { uri ->
-                    menuCategoryModel.Items?.PictureForLoad = uri
+                    menuCategoryModel.Item?.PictureForLoad = uri
                     val img = glide.load(uri)
                     img.diskCacheStrategy(DiskCacheStrategy.NONE)
                     img.into(imgDish)
                 }
             } else {
-                val img = glide.load(menuCategoryModel.Items?.PictureForLoad)
+                val img = glide.load(menuCategoryModel.Item?.PictureForLoad)
                 img.diskCacheStrategy(DiskCacheStrategy.NONE)
                 img.into(imgDish)
             }
@@ -180,21 +180,33 @@ class MenuAdapter(context: Context): RecyclerView.Adapter<RecyclerView.ViewHolde
                 val charSearch = constraint.toString()
                 Log.d("RRRER","ASED = " + charSearch)
 
-                if (charSearch.isEmpty()) {
-
-                } else {
-
-
-                }
                 val filterResults = FilterResults()
-                filterResults.values =  mItemMenuList
+                if (charSearch.isNotEmpty() && mMenuList != null) {
+                    val filter: ArrayList<CatMenuModel> = ArrayList()
+
+                    for(categoryModel in mMenuList!!) {
+                        val filterCategory = CatMenuModel(categoryModel.CategoryName, categoryModel.CategoryNameENG)
+
+                        for (item in categoryModel.Items) {
+                            if (item.value.Name?.contains(charSearch, true) == true
+                            || item.value.NameENG?.contains(charSearch, true) == true
+                            ) {
+                                filterCategory.Items[item.key] = item.value
+                            }
+                        }
+                        if (filterCategory.Items.size > 0)
+                            filter.add(filterCategory)
+                    }
+                    filterResults.values =  filter
+                } else {
+                    filterResults.values =  mMenuList
+                }
                 return filterResults
             }
 
             @Suppress("UNCHECKED_CAST")
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                mItemMenuList = results?.values as ArrayList<MenuModelcatMenu>
-                notifyDataSetChanged()
+                setupMenu(results?.values as ArrayList<CatMenuModel>)
             }
 
         }

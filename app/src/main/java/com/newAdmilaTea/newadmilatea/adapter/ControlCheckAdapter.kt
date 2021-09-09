@@ -50,9 +50,9 @@ class ControlCheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         var  textlastCost: TextView = itemView.findViewById(R.id.lastCost)
         var  textnewCost: TextView = itemView.findViewById(R.id.newCost)
       fun bind(itemView: MenuModelcatMenu){
-          textname.text = itemView.Items?.Name
-          textlastCost.text = itemView.Items?.Cost.toString()
-          textnewCost.text = itemView.Items?.newCost.toString()
+          textname.text = itemView.Item?.Name
+          textlastCost.text = itemView.Item?.Cost.toString()
+          textnewCost.text = itemView.Item?.newCost.toString()
        }
    }
 

@@ -17,7 +17,7 @@ class CountDialog {
 
 
             var menuFile = fileMenu
-            Log.d("PPPP ", " Menufile = " + menuFile.Items?.Name)
+            Log.d("PPPP ", " Menufile = " + menuFile.Item?.Name)
 
             val dialog = Dialog(context, R.style.CustomDialog)
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -40,7 +40,7 @@ class CountDialog {
                 Log.d("GORA","${edite.text.toString()}")
 
                 var text =   edite.text.toString()
-                menuFile.Items?.newCost = text.toDouble()
+                menuFile.Item?.newCost = text.toDouble()
 
                 if (!edite.text.toString().equals("")) {
                     BasketSingleton.addBasket(menuFile)

@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.adminkatea.adapter.ControlCheckAdapter
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.newAdmilaTea.newadmilatea.R
-import com.newAdmilaTea.newadmilatea.databinding.FragmentCheckBinding
 import com.newAdmilaTea.newadmilatea.databinding.FragmentControlCheckBinding
 import com.newAdmilaTea.newadmilatea.model.MenuModelcatMenu
 import com.newAdmilaTea.newadmilatea.singleton.BasketSingleton
@@ -48,18 +46,18 @@ class ControlCheckFragment : Fragment() {
             var categoryNameENG : String
             var nameENG : String
             for (i in list) {
-                categoryNameENG = i.Items?.CategoryNameENG.toString()
-                nameENG = i.Items?.NameENG.toString()
+                categoryNameENG = i.Item?.CategoryNameENG.toString()
+                nameENG = i.Item?.NameENG.toString()
                 Log.d("UREX", "$nameENG")
                 Log.d("UREX", "$categoryNameENG")
-                Log.d("UREX", "${i.Items?.newCost}")
+                Log.d("UREX", "${i.Item?.newCost}")
                 Log.d(
                     "UREX",
                     "${"RestaurantsMenu/TeaTemple/" + categoryNameENG + "/Items/" + nameENG + "/NewCost"}"
                 )
                 mDataBase = FirebaseDatabase.getInstance()
                     .getReference("RestaurantsMenu/TeaTemple/" + categoryNameENG + "/Items/" + nameENG + "/NewCost")
-                mDataBase.ref.setValue(i.Items?.newCost)
+                mDataBase.ref.setValue(i.Item?.newCost)
             }
 
         }

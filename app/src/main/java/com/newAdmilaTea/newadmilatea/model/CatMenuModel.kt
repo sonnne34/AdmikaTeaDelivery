@@ -8,6 +8,6 @@ class CatMenuModel(var CategoryName : String, var CategoryNameENG: String) {
 
     var isHeader = false
 //    var CategoryName: String? = null
-    var Items: Map<String, ItemMenu> = HashMap()
+    var Items: HashMap<String, ItemMenu> = HashMap()
 
 }

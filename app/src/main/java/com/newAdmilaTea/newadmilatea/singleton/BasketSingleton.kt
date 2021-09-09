@@ -13,7 +13,7 @@ object BasketSingleton {
     fun addBasket(item : MenuModelcatMenu){
         var boolean = true
         for(i in basketItem){
-            if(i.Items?.Name == item.Items?.Name){
+            if(i.Item?.Name == item.Item?.Name){
                 boolean = false
             }
         }
@@ -24,13 +24,13 @@ object BasketSingleton {
 
     fun itemCountBasket(ss : String){
         val menu = MenuModelcatMenu()
-        menu.Items?.CountDialog = ss.toLong()
+        menu.Item?.CountDialog = ss.toLong()
     }
 
     fun count(): Long {
         var sumItems: Long = 0
         for (i in basketItem) {
-            sumItems = sumItems +  (i.Items?.Cost!! * i.Items?.CountDialog!!)
+            sumItems = sumItems +  (i.Item?.Cost!! * i.Item?.CountDialog!!)
         }
         return sumItems
     }
@@ -38,7 +38,7 @@ object BasketSingleton {
     fun proverkaNaNalichie(position: MenuModelcatMenu): MenuModelcatMenu? {
         var nn: MenuModelcatMenu? = null
         for (i in basketItem) {
-            if (position.Items?.Name.equals(i.Items?.Name)) {
+            if (position.Item?.Name.equals(i.Item?.Name)) {
                 nn = i
             }
         }
@@ -56,7 +56,7 @@ object BasketSingleton {
 
     fun checkingThelist(gg: MenuModelcatMenu): Boolean {
         for (i in basketItem) {
-            if (gg.Items?.Name.equals(i.Items?.Name)) {
+            if (gg.Item?.Name.equals(i.Item?.Name)) {
                 return true
             }
         }
@@ -65,7 +65,7 @@ object BasketSingleton {
 
     fun showBasket(){
         for(i in basketItem){
-            var yy = i.Items?.Name
+            var yy = i.Item?.Name
 
             Log.d("Basket", "Items = "  + yy)
         }

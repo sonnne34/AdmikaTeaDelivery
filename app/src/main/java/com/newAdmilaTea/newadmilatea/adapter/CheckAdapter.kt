@@ -11,7 +11,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.storage.FirebaseStorage
 
 import com.newAdmilaTea.newadmilatea.R
 import com.newAdmilaTea.newadmilatea.dialog.CountDialog
@@ -58,9 +57,9 @@ class CheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
        var  textnewCost: TextView = itemView.findViewById(R.id.newCost)
        var  btnDel: Button = itemView.findViewById(R.id.btn_del_)
       fun bind(itemView1: MenuModelcatMenu){
-          textname.text = itemView1.Items?.Name
-          textlastCost.text = itemView1.Items?.Cost.toString()
-          textnewCost.text = itemView1.Items?.newCost.toString()
+          textname.text = itemView1.Item?.Name
+          textlastCost.text = itemView1.Item?.Cost.toString()
+          textnewCost.text = itemView1.Item?.newCost.toString()
 
 
 
