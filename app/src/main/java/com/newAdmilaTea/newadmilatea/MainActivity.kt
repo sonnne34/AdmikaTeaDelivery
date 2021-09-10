@@ -11,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.newAdmilaTea.newadmilatea.databinding.ActivityMainBinding
+import com.newAdmilaTea.newadmilatea.listsFragment.listsFragment
 import com.newAdmilaTea.newadmilatea.ui.checkfragment.CheckFragment
 import com.newAdmilaTea.newadmilatea.ui.controlCheckFragment.ControlCheckFragment
 import com.newAdmilaTea.newadmilatea.ui.menufragment.MenuFragment
@@ -50,6 +51,8 @@ class MainActivity : AppCompatActivity() {
 
                 }
                 R.id.report_fragment->{}
+
+                R.id.lists_fragment->{}
             }
         }
 
@@ -69,6 +72,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.report_fragment -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.nav_host_fragment_activity_main,ReportFragment())
+                        .commit()
+
+
+                }
+                R.id.lists_fragment -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.nav_host_fragment_activity_main, listsFragment())
                         .commit()
                 }
             }

@@ -35,6 +35,15 @@
 
 
     <fragment
+        android:id="@+id/lists_fragment"
+        android:name="com.newAdmilaTea.newadmilatea.listsFragment.listsFragment"
+        android:label="Stop"
+        tools:layout="@layout/fragment_lists">
+
+    </fragment>
+
+
+    <fragment
         android:id="@+id/control_check_fragment"
         android:name="com.newAdmilaTea.newadmilatea.ui.reportfragment.ReportFragment"
         android:label="Control_check_fragment"

@@ -19,5 +19,11 @@
         android:title="Отчет" />
 
 
+    <item
+        android:id="@+id/lists_fragment"
+        android:icon="@drawable/ic_baseline_stop"
+        android:title="стоп" />
+
+
 
 </menu>
