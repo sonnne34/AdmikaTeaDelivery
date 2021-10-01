@@ -59,7 +59,7 @@ class CheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
       fun bind(itemView1: MenuModelcatMenu){
           textname.text = itemView1.Item?.Name
           textlastCost.text = itemView1.Item?.Cost.toString()
-          textnewCost.text = itemView1.Item?.newCost.toString()
+          textnewCost.text = itemView1.Item?.NewCost.toString()
 
 
 

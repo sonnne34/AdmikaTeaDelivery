@@ -40,7 +40,7 @@ class CountDialog {
                 Log.d("GORA","${edite.text.toString()}")
 
                 var text =   edite.text.toString()
-                menuFile.Item?.newCost = text.toDouble()
+                menuFile.Item?.NewCost = text.toDouble()
 
                 if (!edite.text.toString().equals("")) {
                     BasketSingleton.addBasket(menuFile)
