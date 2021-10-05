@@ -19,7 +19,6 @@ import com.newAdmilaTea.newadmilatea.databinding.FragmentSaleBinding
 import com.newAdmilaTea.newadmilatea.model.CatMenuModel
 import com.newAdmilaTea.newadmilatea.model.LastModel
 import com.newAdmilaTea.newadmilatea.model.MenuModelcatMenu
-import com.newAdmilaTea.newadmilatea.ui.menufragment.MenuFragment
 
 
 class SaleFragment : Fragment() {
@@ -45,7 +44,6 @@ class SaleFragment : Fragment() {
         binding.recuclerSale.isDrawingCacheEnabled = true
 
         loadMenu()
-        updateAdapter(menulist)
 
         return binding.root
 
@@ -81,7 +79,6 @@ class SaleFragment : Fragment() {
         })
     }
 
-
     private fun updateAdapter(menuList : ArrayList<CatMenuModel>) {
         saleAdapter.setupSalek(menuList)
     }
@@ -91,5 +88,4 @@ class SaleFragment : Fragment() {
         fun newInstance() =
             SaleFragment()
     }
-
 }

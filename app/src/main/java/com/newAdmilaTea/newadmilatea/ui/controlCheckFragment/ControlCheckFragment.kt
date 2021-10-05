@@ -51,13 +51,21 @@ class ControlCheckFragment : Fragment() {
                 Log.d("UREX", "$nameENG")
                 Log.d("UREX", "$categoryNameENG")
                 Log.d("UREX", "${i.Item?.NewCost}")
-                Log.d(
-                    "UREX",
-                    "${"RestaurantsMenu/TeaTemple/" + categoryNameENG + "/Items/" + nameENG + "/NewCost"}"
-                )
-                mDataBase = FirebaseDatabase.getInstance()
-                    .getReference("RestaurantsMenu/TeaTemple/" + categoryNameENG + "/Items/" + nameENG + "/NewCost")
-                mDataBase.ref.setValue(i.Item?.NewCost)
+                Log.d("UREX",
+                    "${"RestaurantsMenu/TeaTemple/" + categoryNameENG + "/Items/" + nameENG + "/NewCost"}")
+
+                val stopVal = i.Item?.Stop?.toInt()!!
+
+                if(stopVal == 0 || stopVal == 1){
+                    mDataBase = FirebaseDatabase.getInstance()
+                        .getReference("RestaurantsMenu/TeaTemple/" + categoryNameENG + "/Items/" + nameENG + "/Stop")
+                    mDataBase.ref.setValue(i.Item?.Stop)
+
+                }else {
+                    mDataBase = FirebaseDatabase.getInstance()
+                        .getReference("RestaurantsMenu/TeaTemple/" + categoryNameENG + "/Items/" + nameENG + "/NewCost")
+                    mDataBase.ref.setValue(i.Item?.NewCost)
+                }
             }
 
         }

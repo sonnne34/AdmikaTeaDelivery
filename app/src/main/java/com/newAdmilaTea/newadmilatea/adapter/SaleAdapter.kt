@@ -10,8 +10,6 @@ import android.widget.RelativeLayout
 
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.google.firebase.storage.FirebaseStorage
 
 import com.newAdmilaTea.newadmilatea.R
 import com.newAdmilaTea.newadmilatea.dialog.CountDialog
@@ -21,20 +19,20 @@ import com.newAdmilaTea.newadmilatea.model.LastModel
 import com.newAdmilaTea.newadmilatea.model.MenuModelcatMenu
 
 class SaleAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var mItemMenuList: ArrayList<MenuModelcatMenu> = ArrayList()
+    var mItemCheckList: ArrayList<MenuModelcatMenu> = ArrayList()
 
 
 
     @SuppressLint("NotifyDataSetChanged")
     fun setupSalek(catMenuModel: ArrayList<CatMenuModel>){
 
-        mItemMenuList.clear()
+        mItemCheckList.clear()
 
         for (categoryModel in catMenuModel) {
             for (i in categoryModel.Items) {
                 var menuModel = MenuModelcatMenu()
                 menuModel.Item = i.value
-                mItemMenuList.add(menuModel)
+                mItemCheckList.add(menuModel)
             }
         }
 
@@ -51,13 +49,13 @@ class SaleAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
     override fun getItemCount(): Int {
-        return mItemMenuList.count()
+        return mItemCheckList.count()
 
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is Holderitem){
-            holder.bind(menuCategoryModel = mItemMenuList[position])
+            holder.bind(menuCategoryModel = mItemCheckList[position])
         }
     }
 
@@ -75,6 +73,7 @@ class SaleAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
           Log.d("NewCostString", "cost = $newCost")
 
+          //если новая цена пуста или равна 0 то скрывать элемент
           if (newCost.toDouble() == 1.7976931348623157E308 || newCost.toDouble() == 0.0) {
               layout.visibility = View.GONE
               layout.layoutParams = RecyclerView.LayoutParams(0, 0)
@@ -89,7 +88,6 @@ class SaleAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
           itemView.setOnClickListener {
               CountDialog.openDialog(itemView.context, menuCategoryModel)
           }
-
        }
    }
 
