@@ -35,6 +35,8 @@ class CountDialogStop {
             var btn_active = dialog.findViewById(R.id.btn_stop_active_dialog) as Button
             btn_active.setOnClickListener {
 
+                //Изменение цены не происходит (Switch=0), нужно при отправке данных на сервер:
+                menuFile.Item?.Switch = 0
                 menuFile.Item?.Stop = 1
                     BasketSingleton.addBasket(menuFile)
                     BasketSingleton.showBasket()

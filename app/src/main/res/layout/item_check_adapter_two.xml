@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/stop_control"
         android:background="#F44336"
-        android:text="активировать"
+        android:text="в актив"
         android:textSize="20dp" />
 
 

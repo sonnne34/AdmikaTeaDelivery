@@ -59,26 +59,34 @@ class ControlCheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
           val stopVal = itemView.Item?.Stop?.toInt()!!
 
+          val switch = itemView.Item?.Switch
+
+          //если изменение цены не происходит то цены скрыть
+          if (switch == 0){
+              textlastCost.visibility = View.GONE
+              textnewCost.visibility = View.GONE
+
+          } else {
+              textlastCost.visibility = View.VISIBLE
+              textnewCost.visibility = View.VISIBLE
+          }
+
+          //условия видимости объектов "стоп" и "активировать"
           when (stopVal) {
               0 -> {
                   stop.visibility = View.VISIBLE
                   stopActive.visibility = View.GONE
-                  textlastCost.visibility = View.GONE
-                  textnewCost.visibility = View.GONE
               }
               1 -> {
                   stop.visibility = View.GONE
                   stopActive.visibility = View.VISIBLE
-                  textlastCost.visibility = View.GONE
-                  textnewCost.visibility = View.GONE
               }
               else -> {
                   stop.visibility = View.GONE
                   stopActive.visibility = View.GONE
-                  textlastCost.visibility = View.VISIBLE
-                  textnewCost.visibility = View.VISIBLE
               }
           }
+
        }
    }
 

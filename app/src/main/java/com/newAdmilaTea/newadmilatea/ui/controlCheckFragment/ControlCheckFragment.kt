@@ -54,20 +54,19 @@ class ControlCheckFragment : Fragment() {
                 Log.d("UREX",
                     "${"RestaurantsMenu/TeaTemple/" + categoryNameENG + "/Items/" + nameENG + "/NewCost"}")
 
-                val stopVal = i.Item?.Stop?.toInt()!!
+                val switch = i.Item?.Switch
 
-                if(stopVal == 0 || stopVal == 1){
-                    mDataBase = FirebaseDatabase.getInstance()
-                        .getReference("RestaurantsMenu/TeaTemple/" + categoryNameENG + "/Items/" + nameENG + "/Stop")
-                    mDataBase.ref.setValue(i.Item?.Stop)
-
-                }else {
+                if(switch == 1){
                     mDataBase = FirebaseDatabase.getInstance()
                         .getReference("RestaurantsMenu/TeaTemple/" + categoryNameENG + "/Items/" + nameENG + "/NewCost")
                     mDataBase.ref.setValue(i.Item?.NewCost)
+
+                }else {
+                    mDataBase = FirebaseDatabase.getInstance()
+                        .getReference("RestaurantsMenu/TeaTemple/" + categoryNameENG + "/Items/" + nameENG + "/Stop")
+                    mDataBase.ref.setValue(i.Item?.Stop)
                 }
             }
-
         }
         return binding.root
     }

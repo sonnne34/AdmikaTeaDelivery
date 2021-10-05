@@ -36,6 +36,8 @@ class CountDialog {
             var btn_stop = dialog.findViewById(R.id.btn_stop_dialog) as Button
             btn_stop.setOnClickListener {
 
+                //Изменение цены не происходит (Switch=0), нужно при отправке данных на сервер:
+                menuFile.Item?.Switch = 0
                 menuFile.Item?.Stop = 0
                     BasketSingleton.addBasket(menuFile)
                     BasketSingleton.showBasket()
@@ -45,15 +47,14 @@ class CountDialog {
             }
 
 
-
-
-
             var btn_ok = dialog.findViewById(R.id.btn_ok_dialog) as Button
             btn_ok.setOnClickListener {
 
                 Log.d("GORA","${edite.text.toString()}")
 
                 var text =   edite.text.toString()
+                //Изменение цены происходит (Switch=1), нужно при отправке данных на сервер:
+                menuFile.Item?.Switch = 1
                 menuFile.Item?.NewCost = text.toDouble()
 
                 if (!edite.text.toString().equals("")) {
