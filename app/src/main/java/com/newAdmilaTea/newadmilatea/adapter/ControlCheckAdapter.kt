@@ -55,8 +55,8 @@ class ControlCheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
       fun bind(itemView: MenuModelcatMenu){
           textname.text = itemView.Item?.Name
-          textlastCost.text = itemView.Item?.Cost.toString()
-          textnewCost.text = itemView.Item?.NewCost.toString()
+          textlastCost.text = itemView.Item?.Cost.toString()  + " р."
+          textnewCost.text = itemView.Item?.NewCost.toString()  + " р."
 
           val stopVal = itemView.Item?.Stop?.toInt()!!
 

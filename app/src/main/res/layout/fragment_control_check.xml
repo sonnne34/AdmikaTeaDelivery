@@ -11,15 +11,16 @@
 
         <TextView
             android:id="@+id/text_control_check"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:background="#AF170C"
-            android:padding="3dp"
             android:gravity="center"
-            android:text="Контрольная проверка(без возможности изменить)"
+            android:padding="2dp"
+            android:layout_margin="5dp"
+            android:text="Контрольная проверка \n (без возможности изменить)"
             android:textColor="#E4E8E6"
-            android:textSize="15dp" />
+            android:textSize="20dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/check_control_recycler"
@@ -29,15 +30,17 @@
 
         <TextView
             android:id="@+id/text_ckeck"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/check_control_recycler"
             android:layout_centerHorizontal="true"
             android:background="#ED2819"
             android:gravity="center"
             android:padding="3dp"
-            android:text="При нажатии NEXT объект уходит на сервер"
-            android:textSize="18sp" />
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="*при нажатии NEXT данные уходят на сервер"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btn_next"
