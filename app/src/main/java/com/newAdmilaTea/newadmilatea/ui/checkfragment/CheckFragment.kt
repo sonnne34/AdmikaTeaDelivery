@@ -1,10 +1,12 @@
 package com.newAdmilaTea.newadmilatea.ui.checkfragment
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.adminkatea.adapter.CheckAdapter
@@ -14,6 +16,7 @@ import com.newAdmilaTea.newadmilatea.databinding.FragmentCheckBinding
 import com.newAdmilaTea.newadmilatea.listener.EventListenerss
 import com.newAdmilaTea.newadmilatea.model.MenuModelcatMenu
 import com.newAdmilaTea.newadmilatea.singleton.BasketSingleton
+import java.security.AccessControlContext
 import java.util.ArrayList
 
 
@@ -22,6 +25,7 @@ class CheckFragment : Fragment(), EventListenerss {
   private lateinit var binding : FragmentCheckBinding
   private lateinit var checkAdapter: CheckAdapter
   private var listItem : ArrayList<MenuModelcatMenu> = ArrayList()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,6 +44,9 @@ class CheckFragment : Fragment(), EventListenerss {
         listItem.addAll(BasketSingleton.basketItem)
         loadItem(listItem)
 
+        binding.btnDelAll.setOnClickListener {
+            btnDelAll(binding.root.context)
+        }
 
         binding.buttonNext.setOnClickListener {
             var main = (activity as MainActivity)
@@ -47,6 +54,24 @@ class CheckFragment : Fragment(), EventListenerss {
         }
 
         return binding.root
+    }
+
+    private fun btnDelAll(context: Context) {
+        val clearDialog = AlertDialog.Builder(context)
+        clearDialog.setTitle("Аннигилирование")
+        clearDialog.setMessage("Очистить список?")
+        clearDialog.setPositiveButton(
+            "Да"
+        ) { _, _ ->
+
+            BasketSingleton.del()
+            BasketSingleton.notifyTwo()
+
+        }
+        clearDialog.setNegativeButton(
+            "Ой, нет!"
+        ) { _, _ -> }
+        clearDialog.show()
     }
 
     private fun loadItem(list : ArrayList<MenuModelcatMenu>) {

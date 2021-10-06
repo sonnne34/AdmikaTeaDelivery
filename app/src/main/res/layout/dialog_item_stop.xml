@@ -4,16 +4,31 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <TextView
+        android:id="@+id/txt_name_stop"
+        android:textSize="20sp"
+        android:padding="5dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="25dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#982343"
+        android:text="Название" />
+
         <Button
             android:id="@+id/btn_stop_active_dialog"
             android:text="активировать"
-            android:layout_width="180dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="25dp"
+            android:background="#345534"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btn_stop_cancel_dialog"
         android:text="Cancel"
-        android:layout_width="180dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
 </LinearLayout>

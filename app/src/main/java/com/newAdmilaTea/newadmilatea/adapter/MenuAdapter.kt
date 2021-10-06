@@ -146,12 +146,12 @@ class MenuAdapter(context: Context): RecyclerView.Adapter<RecyclerView.ViewHolde
                     menuCategoryModel.Item?.PictureForLoad = uri
                     val img = glide.load(uri)
                     img.diskCacheStrategy(DiskCacheStrategy.NONE)
-                    img.into(imgDish)
+                    img.centerCrop().into(imgDish)
                 }
             } else {
                 val img = glide.load(menuCategoryModel.Item?.PictureForLoad)
                 img.diskCacheStrategy(DiskCacheStrategy.NONE)
-                img.into(imgDish)
+                img.centerCrop().into(imgDish)
             }
 
 

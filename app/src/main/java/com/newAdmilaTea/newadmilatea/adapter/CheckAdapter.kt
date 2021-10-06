@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
@@ -53,25 +54,29 @@ class CheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
    class Holderitem(itemView : View) : RecyclerView.ViewHolder(itemView){
        var  textname: TextView = itemView.findViewById(R.id.text_name_item)
+       var  costText: TextView = itemView.findViewById(R.id.lastCost_text)
        var  textlastCost: TextView = itemView.findViewById(R.id.lastCost)
        var  textnewCost: TextView = itemView.findViewById(R.id.newCost)
        var  btnDel: Button = itemView.findViewById(R.id.btn_del_)
        var  stop: TextView = itemView.findViewById(R.id.stop)
        var  stopActive: TextView = itemView.findViewById(R.id.stop_active)
 
+      @SuppressLint("SetTextI18n")
       fun bind(itemView1: MenuModelcatMenu){
           textname.text = itemView1.Item?.Name
-          textlastCost.text = itemView1.Item?.Cost.toString()
-          textnewCost.text = itemView1.Item?.NewCost.toString()
+          textlastCost.text = itemView1.Item?.Cost.toString() + " р."
+          textnewCost.text = itemView1.Item?.NewCost.toString() + " р."
           val stopVal = itemView1.Item?.Stop?.toInt()!!
           val switch = itemView1.Item?.Switch
 
           //если изменение цены не происходит то цены скрыть
           if (switch == 0){
+              costText.visibility = View.GONE
               textlastCost.visibility = View.GONE
               textnewCost.visibility = View.GONE
 
           } else {
+              costText.visibility = View.VISIBLE
               textlastCost.visibility = View.VISIBLE
               textnewCost.visibility = View.VISIBLE
           }
@@ -98,10 +103,7 @@ class CheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
               CountDialog.openDialog(itemView.context, itemView1)
 
           }
-
        }
-
-
    }
 
     private fun btnDel(holder: RecyclerView.ViewHolder, position: Int){

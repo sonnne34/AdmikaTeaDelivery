@@ -32,6 +32,9 @@ class CountDialogStop {
             dialog.setCanceledOnTouchOutside(true)
             dialog.show()
 
+            var txtName = dialog.findViewById(R.id.txt_name_stop) as TextView
+            txtName.text = menuFile.Item?.Name
+
             var btn_active = dialog.findViewById(R.id.btn_stop_active_dialog) as Button
             btn_active.setOnClickListener {
 

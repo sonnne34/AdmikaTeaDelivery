@@ -54,6 +54,8 @@ class ControlCheckFragment : Fragment() {
                 Log.d("UREX",
                     "${"RestaurantsMenu/TeaTemple/" + categoryNameENG + "/Items/" + nameENG + "/NewCost"}")
 
+                //Switch - переключатель, указывающий, происходит изменение цены или нет,
+                // где 0 - меняется только наличие, 1 - меняется цена
                 val switch = i.Item?.Switch
 
                 if(switch == 1){

@@ -7,13 +7,15 @@
 
    <TextView
        android:id="@+id/text_choose"
-       android:layout_centerHorizontal="true"
-       android:background="#284223"
-       android:textSize="30dp"
-       android:textColor="#E2ECE7"
-       android:text="Выбираем Элементы:"
        android:layout_width="wrap_content"
-       android:layout_height="wrap_content"/>
+       android:layout_height="wrap_content"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="5dp"
+       android:background="#284223"
+       android:padding="3dp"
+       android:text="Выбираем Элементы:"
+       android:textColor="#E2ECE7"
+       android:textSize="20dp"/>
 
    <androidx.appcompat.widget.SearchView
        android:id="@+id/Search_view"

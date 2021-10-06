@@ -32,6 +32,8 @@ class CountDialog {
             dialog.setCanceledOnTouchOutside(true)
             dialog.show()
             var edite = dialog.findViewById(R.id.editetext_dialog) as EditText
+            var txtName = dialog.findViewById(R.id.txt_name) as TextView
+            txtName.text = menuFile.Item?.Name
 
             var btn_stop = dialog.findViewById(R.id.btn_stop_dialog) as Button
             btn_stop.setOnClickListener {

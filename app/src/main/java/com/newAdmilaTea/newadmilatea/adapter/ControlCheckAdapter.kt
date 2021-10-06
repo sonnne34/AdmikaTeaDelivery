@@ -47,6 +47,7 @@ class ControlCheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
    class Holderitem(itemView : View) : RecyclerView.ViewHolder(itemView){
         var  textname: TextView = itemView.findViewById(R.id.text_name_item)
+        var  costText: TextView = itemView.findViewById(R.id.lastCost_text)
         var  textlastCost: TextView = itemView.findViewById(R.id.lastCost)
         var  textnewCost: TextView = itemView.findViewById(R.id.newCost)
         var  stop: TextView = itemView.findViewById(R.id.stop_control)
@@ -63,10 +64,12 @@ class ControlCheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
           //если изменение цены не происходит то цены скрыть
           if (switch == 0){
+              costText.visibility = View.GONE
               textlastCost.visibility = View.GONE
               textnewCost.visibility = View.GONE
 
           } else {
+              costText.visibility = View.VISIBLE
               textlastCost.visibility = View.VISIBLE
               textnewCost.visibility = View.VISIBLE
           }
