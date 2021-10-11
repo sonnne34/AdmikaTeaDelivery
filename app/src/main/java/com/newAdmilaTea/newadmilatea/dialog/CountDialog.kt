@@ -17,7 +17,6 @@ class CountDialog {
 
 
             var menuFile = fileMenu
-            Log.d("PPPP ", " Menufile = " + menuFile.Item?.Name)
 
             val dialog = Dialog(context, R.style.CustomDialog)
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -52,7 +51,6 @@ class CountDialog {
             var btn_ok = dialog.findViewById(R.id.btn_ok_dialog) as Button
             btn_ok.setOnClickListener {
 
-                Log.d("GORA","${edite.text.toString()}")
 
                 var text =   edite.text.toString()
                 //Изменение цены происходит (Switch=1), нужно при отправке данных на сервер:

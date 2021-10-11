@@ -17,7 +17,7 @@ class CountDialogStop {
 
 
             var menuFile = fileMenu
-            Log.d("PPPP ", " Menufile = " + menuFile.Item?.Name)
+
 
             val dialog = Dialog(context, R.style.CustomDialog)
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
