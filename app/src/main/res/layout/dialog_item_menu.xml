@@ -28,6 +28,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
         <EditText
             android:id="@+id/editetext_dialog"
             android:hint="Изменить стоимоcть"
@@ -35,8 +40,17 @@
             android:layout_margin="25dp"
             android:gravity="center"
             android:inputType="number"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_ok_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="25dp"
+            android:text="Ок"/>
+
+        </LinearLayout>
 
        <LinearLayout
            android:orientation="horizontal"
@@ -45,18 +59,24 @@
            android:weightSum="2">
 
            <Button
-               android:id="@+id/btn_ok_dialog"
-               android:text="ok"
+               android:id="@+id/btn_del_cost_dialog"
+               android:text="Удалить скидку"
                android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
                android:layout_weight="1"
-               android:layout_height="wrap_content"/>
+               android:layout_marginStart="5dp"
+               android:layout_marginLeft="5dp"
+               android:layout_marginRight="15dp"
+               android:layout_marginEnd="15dp"/>
 
            <Button
                android:id="@+id/btn_cancel_dialog"
-               android:text="Cancel"
+               android:text="Отмена"
                android:layout_weight="1"
                android:layout_width="wrap_content"
-               android:layout_height="wrap_content"/>
+               android:layout_height="wrap_content"
+               android:layout_marginRight="5dp"
+               android:layout_marginEnd="5dp"/>
        </LinearLayout>
 
 

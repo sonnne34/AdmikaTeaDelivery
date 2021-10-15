@@ -9,7 +9,7 @@ class AuthenticationPresenter(view1 : AuthenticationInterface.View) : Authentica
     override fun doLogin(email: String, password: String) {
 
 
-        if(email.equals("Nik") && password.equals("PASS")){
+        if(email == "Nik" && password == "PASS"){
             view.onSuccess("Successful")
         }else {
             view.onError("wrong password or email")

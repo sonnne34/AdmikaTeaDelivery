@@ -63,11 +63,18 @@ class CheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
       @SuppressLint("SetTextI18n")
       fun bind(itemView1: MenuModelcatMenu){
-          textname.text = itemView1.Item?.Name
-          textlastCost.text = itemView1.Item?.Cost.toString() + " р."
-          textnewCost.text = itemView1.Item?.NewCost.toString() + " р."
+          val newCost = itemView1.Item?.NewCost
           val stopVal = itemView1.Item?.Stop?.toInt()!!
           val switch = itemView1.Item?.Switch
+          textname.text = itemView1.Item?.Name
+          textlastCost.text = itemView1.Item?.Cost.toString() + " р."
+
+          if (newCost?.toInt() == 0){
+              textnewCost.text = "Удалить скидку"
+              textlastCost.visibility = View.INVISIBLE
+          } else{
+              textnewCost.text = newCost.toString() + " р."
+          }
 
           //если изменение цены не происходит то цены скрыть
           if (switch == 0){
@@ -77,7 +84,6 @@ class CheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
           } else {
               costText.visibility = View.VISIBLE
-              textlastCost.visibility = View.VISIBLE
               textnewCost.visibility = View.VISIBLE
           }
 
@@ -129,6 +135,4 @@ class CheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             }
         }
     }
-
-
 }

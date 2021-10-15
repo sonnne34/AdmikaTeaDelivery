@@ -21,13 +21,19 @@
         android:id="@+id/editeText_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_below="@id/text_name"
+        android:layout_marginTop="20dp"
+        android:maxLines="1"
+        android:maxEms="20"
+        android:imeOptions="actionNext"
         android:hint="Email" />
 
 
     <EditText
         android:id="@+id/editeText_password"
+        android:imeOptions="actionDone"
+        android:maxLines="1"
+        android:maxEms="20"
         android:hint="password"
         android:layout_below="@+id/editeText_email"
         android:layout_centerVertical="true"

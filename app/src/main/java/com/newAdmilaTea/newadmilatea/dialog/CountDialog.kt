@@ -34,6 +34,7 @@ class CountDialog {
             var txtName = dialog.findViewById(R.id.txt_name) as TextView
             txtName.text = menuFile.Item?.Name
 
+            //отправить товар в стоп
             var btn_stop = dialog.findViewById(R.id.btn_stop_dialog) as Button
             btn_stop.setOnClickListener {
 
@@ -47,22 +48,42 @@ class CountDialog {
                 dialog.cancel()
             }
 
+            //удалить скидку
+            val btn_del_cost = dialog.findViewById(R.id.btn_del_cost_dialog) as Button
 
+            btn_del_cost.setOnClickListener {
+                //Изменение цены происходит (Switch=1), нужно при отправке данных на сервер:
+                menuFile.Item?.Switch = 1
+                var delCost = 0
+                menuFile.Item?.NewCost = delCost.toDouble()
+
+                BasketSingleton.addBasket(menuFile)
+                BasketSingleton.showBasket()
+                BasketSingleton.notifyTwo()
+
+                dialog.cancel()
+            }
+
+
+            //сохранить изменение цены
             var btn_ok = dialog.findViewById(R.id.btn_ok_dialog) as Button
             btn_ok.setOnClickListener {
-
 
                 var text =   edite.text.toString()
                 //Изменение цены происходит (Switch=1), нужно при отправке данных на сервер:
                 menuFile.Item?.Switch = 1
-                menuFile.Item?.NewCost = text.toDouble()
+
+                if(text.isNotEmpty()) {
+                    menuFile.Item?.NewCost = text.toDouble()
+                }else{
+                    dialog.cancel()
+                }
 
                 if (!edite.text.toString().equals("")) {
                     BasketSingleton.addBasket(menuFile)
                     BasketSingleton.showBasket()
                     BasketSingleton.notifyTwo()
-                }
-                else {
+                } else {
                     if (file != null) {
                         val position: Int = 0
                         BasketSingleton.delPos(position)
@@ -72,7 +93,8 @@ class CountDialog {
                 dialog.cancel()
             }
 
-            var btn_cancel = dialog.findViewById(R.id.btn_cancel_dialog) as Button
+            //закрыть окно
+            val btn_cancel = dialog.findViewById(R.id.btn_cancel_dialog) as Button
 
             btn_cancel.setOnClickListener {
                 dialog.cancel()

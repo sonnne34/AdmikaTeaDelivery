@@ -54,13 +54,19 @@ class ControlCheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         var  stopActive: TextView = itemView.findViewById(R.id.stop_active)
 
       fun bind(itemView: MenuModelcatMenu){
+          val stopVal = itemView.Item?.Stop?.toInt()!!
+          val switch = itemView.Item?.Switch
+          val newCost = itemView.Item?.NewCost
           textname.text = itemView.Item?.Name
           textlastCost.text = itemView.Item?.Cost.toString()  + " р."
-          textnewCost.text = itemView.Item?.NewCost.toString()  + " р."
 
-          val stopVal = itemView.Item?.Stop?.toInt()!!
+          if (newCost?.toInt() == 0){
+              textnewCost.text = "Удалить скидку"
+              textlastCost.visibility = View.INVISIBLE
+          } else{
+              textnewCost.text = newCost.toString() + " р."
+          }
 
-          val switch = itemView.Item?.Switch
 
           //если изменение цены не происходит то цены скрыть
           if (switch == 0){
@@ -70,7 +76,6 @@ class ControlCheckAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
           } else {
               costText.visibility = View.VISIBLE
-              textlastCost.visibility = View.VISIBLE
               textnewCost.visibility = View.VISIBLE
           }
 
