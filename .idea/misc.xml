@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Alexander/GitHub/Git Nastya/adminkaTea/app/src/main/res/layout/activity_authentication.xml" value="0.11865942028985507" />
+        <entry key="..\:/Alexander/GitHub/Git Nastya/adminkaTea/app/src/main/res/layout/activity_authentication.xml" value="0.22" />
+        <entry key="..\:/Alexander/GitHub/Git Nastya/adminkaTea/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Alexander/GitHub/Git Nastya/adminkaTea/app/src/main/res/layout/category_item_menu.xml" value="0.1" />
         <entry key="..\:/Alexander/GitHub/Git Nastya/adminkaTea/app/src/main/res/layout/dialog_item_menu.xml" value="0.22" />
         <entry key="..\:/Alexander/GitHub/Git Nastya/adminkaTea/app/src/main/res/layout/fragment_check.xml" value="0.1" />
         <entry key="..\:/Alexander/GitHub/Git Nastya/adminkaTea/app/src/main/res/layout/fragment_control_check.xml" value="0.18" />
